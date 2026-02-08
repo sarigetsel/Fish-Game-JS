@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeding Frenzy</title>
+    <link rel="icon" href="pic/fish.png" type="image/x-icon">
+</head>
+<link rel="stylesheet" href="fishGame.css"/>
+<body>
+    <img id="first" src="pic/first.png" alt="firstPicture">
+
+    <div id="mostPoint">
+        <img  id="mostPic" src="pic/most.png" alt="thsMost">
+        <p id="pMost"></p>
+        <img id="back" src="pic/back.png" alt="back">
+    </div>
+
+    
+    <img id="startGame" src="pic/start.png" alt="startGame">
+
+    <div id="instructions">
+        <img id="intruImg" src="pic/instruction.png" alt="הוראות">
+        <button id="closeintru">X</button>
+    </div>
+    
+    <div id="divCircle1">
+       <div id="circle1" class="circle"><button id="btn1" onclick="chooseLevel()">שלבים</button></div>
+       <div id="circle2" class="circle"><button id="btn2" onclick="chooseBack()">רקעים</button></div>
+       <div id="circle3" class="circle"><button id="btn3" onclick="TheMost()">שיא</button></div>
+       <div id="circle4" class="circle"><button id="btn2" onclick="howToPlay()">הוראות</button></div>
+    </div>
+
+    <div id="divCircle2" style="display:none">
+        <div id="circle11" class="circle"><button onclick="func1()">שלב1</button></div>
+        <div id="circle22" class="circle"><button onclick="func2()">שלב2</button></div>
+        <div id="circle33" class="circle"><button onclick="func3()">שלב3</button></div>
+        <div id="circle44" class="circle"><button onclick="goBack()">⬅ חזור</button></div>
+        </div>
+
+     <div id="divCircle3" style="display:none">
+        <div id="circle555" class="circle"><button onclick="goBack()">⬅ חזור</button></div>
+        <div id="circle111" class="circle"><button onclick="replaceBack(event)"><img class="imgCircle" src="pic/backGround.png" alt="back1"></button></div>
+        <div id="circle222" class="circle"><button onclick="replaceBack(event)"><img class="imgCircle" src="pic/b2.png" alt="back2"></button></div>
+        <div id="circle333" class="circle"><button onclick="replaceBack(event)"><img class="imgCircle" src="pic/b3.png" alt="back3"></button></div>
+        <div id="circle444" class="circle"><button onclick="replaceBack(event)"><img class="imgCircle" src="pic/b4.png" alt="back4"></button></div>
+        <div id="circle444" class="circle"><button onclick="replaceBack(event)"><img class="imgCircle" src="pic/b6.png" alt="back6"></button></div>
+        <div id="circle444" class="circle"><button onclick="replaceBack(event)"><img class="imgCircle" src="pic/b7.png" alt="back7"></button></div>
+     </div>
+    <script>
+
+        document.getElementById("first").addEventListener("click",turnMusic);
+        document.getElementById("back").addEventListener("click",goBack);
+        document.getElementById("closeintru").addEventListener("click",closeInstructions)
+
+    function turnMusic(){
+        
+        let music = new Audio("music/menuMusic.WAV");
+        music.play()
+    }
+    setTimeout(function() {
+      document.getElementById("first").style.display = "none";
+    }, 5500);
+    function chooseLevel(){
+           document.getElementById("divCircle1").style.display="none";
+           document.getElementById("divCircle2").style.display="flex";
+           document.getElementById("divCircle3").style.display="none"; 
+        }
+    function goBack(){
+            document.getElementById("divCircle1").style.display="flex";
+            document.getElementById("divCircle2").style.display="none"; 
+            document.getElementById("divCircle3").style.display="none"; 
+            document.getElementById("mostPic").style.display="none";
+            document.getElementById("pMost").style.display="none";
+            document.getElementById("back").style.display="none";
+        }
+    function chooseBack(){
+            document.getElementById("divCircle1").style.display="none";
+            document.getElementById("divCircle2").style.display="none"; 
+            document.getElementById("divCircle3").style.display="flex"; 
+        }
+    function TheMost(){
+            
+            document.getElementById("mostPoint").style.display="block";
+            document.getElementById("mostPic").style.display="block";
+            let x=JSON.parse(localStorage.getItem("most"));
+            document.getElementById("pMost").innerText="השיא הוא: "+x;
+            document.getElementById("pMost").style.display="block";
+            let b=document.getElementById("back");
+            b.style.display="block";
+            b.style.left="43vw";
+            b.style.top="90vh";
+        }
+    function replaceBack(event){
+    let clickImg;
+    if(event.target.tagName="IMG"){
+       clickImg=event.target;
+    }
+    else if(event.target.tagName="BUTTON"){
+    clickImg=event.target.querySelector("img");
+    }
+    if(clickImg){
+        let src = clickImg.getAttribute("src");// מביא את הכתובת של התמונה שנלחצה
+        localStorage.setItem("src",JSON.stringify(src))
+    }
+   }
+    function func1(){
+    localStorage.setItem("currentLevel","1");
+    window.location.href="fishGame.html";
+
+   }
+    function func2(){
+    localStorage.setItem("currentLevel","2");
+    window.location.href="fishGame.html";
+
+   }
+    function func3(){
+    localStorage.setItem("currentLevel","3");
+    window.location.href="fishGame.html";
+
+   }
+    function howToPlay(){
+    document.getElementById("instructions").style.display = "block";
+}
+    function closeInstructions(){
+    document.getElementById("instructions").style.display = "none";
+}
+
+   </script>
+</body>
+</html>

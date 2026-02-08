@@ -1,0 +1,453 @@
+
+body.hide-cursor {
+  cursor: none;
+}
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+  #backGround
+  {
+     position:relative;
+     background-repeat: no-repeat;
+     width: 100%;
+     height: auto;
+  }
+
+  #fish-cursor {
+    position: absolute;
+    width: 6vw;
+    height: auto;
+    pointer-events: none;
+    z-index: 1000;
+    transition: transform 0.1s; /* מעבר חלק כשמתהפך */
+  }
+  .classLittle,.classLittle2{
+     z-index: 900;
+     width: 5vw;
+     height: auto;
+     position: absolute;
+     margin: 5vw;
+     margin-top: 13vh;
+  }
+  .classMedium{
+    z-index:1100;
+    width: 10vw;
+    height: auto;
+    position: absolute;
+    margin: 5vw;
+    margin-top: 13vh;
+  }
+  .classBig{
+    z-index:1200;
+    width: 25vw;
+    height: auto;
+    position: absolute;
+    margin: 5vw;
+    margin-top: 13vh;
+  }
+
+  .classLittle,.classMedium{
+     animation: swimRight 8.5s linear forwards;
+  }
+  .classLittle2,.classBig{
+    animation: swimLeft 6s linear forwards;
+ }
+
+  @keyframes swimRight {
+    from {
+      right: -200px;
+    }
+    to {
+        right: 100vw;
+
+    }
+  }
+  
+  @keyframes swimLeft {
+    from {
+        left: -200px;
+    }
+    to {
+        left: 100vw;
+    }
+  }
+  #levelImg{
+    position: fixed;
+    z-index: 1200;
+    top: 0;
+    width: 100%;
+    height:auto;
+  }
+  .scoree{
+    position: fixed;
+    color: white;
+    margin-top: 3vh;
+    margin-left: 88.5vw;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1500;
+    size: 60vw;
+    font-weight: bold;
+    
+  }
+  #live{
+    margin-left: 97vw;
+  }
+  
+  #littleScore{
+    margin-left: 27vw;
+    color: black;
+  }
+  #mediumScore{
+    margin-left: 46vw;
+    color: black;
+  }
+  #bigScore{
+    margin-left: 65vw;
+    color: black;
+  }
+ 
+  #faild,#win{
+    position: fixed;
+    top: 8vh;       
+    left: 20vw;    
+    width: 55vw;
+    height: auto;
+    z-index: 2000;   
+    display: none;
+  }
+  #gameOver{
+    position: fixed;
+     z-index: 2005;
+     width: 100%;
+     height: auto;
+     display: none;
+     top: 0;
+     left: 0;
+  }
+  #playAgain{
+    position: fixed;
+    z-index: 2010;
+    top: 78vh;
+    left: 35vw;
+    display: none;
+    width: 15vw;
+    height: auto;
+    cursor: pointer;
+  }
+  #back{
+    position: fixed;
+    z-index: 2020;
+    top: 78vh;
+    left: 53vw;
+    display: none;
+    width: 15vw;
+    height: auto;
+    cursor: pointer;
+  }
+  #startGame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+  }
+  #divCircle1,#divCircle2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4vh;
+    height: 100vh;
+  }
+  #divCircle3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* שתי עמודות */
+    justify-items: center;
+    align-items: center;
+    gap: 3vh 4vw;
+    
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* מרכז אופקית ואנכית */
+  }
+
+  /* הכפתורים העגולים בהתחלה*/
+  .circle button {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2); 
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px black;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+  }
+  
+  .circle button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+  }
+
+  #circle1,#circle11,#circle3,#circle33{
+    margin-right: 16vw;
+  }
+
+  #circle2,#circle22,#circle44{
+    margin-left: 16vw;
+  }
+
+  .imgCircle {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /*התמונה הראשונה*/
+  #first{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+    background-repeat: no-repeat;
+  }
+  /*השיא*/
+  #mostPoint{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+    background-repeat: no-repeat;
+    display: none;
+  }
+  #mostPic{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #pMost {
+    position: fixed;
+    top: 50%;
+    left: 39%;
+    color: rgb(146, 111, 137);
+    text-shadow: 2px 5px 10px black;
+    text-align: center;
+    font-size: 5vw;
+    font-weight: bold;
+    font-family: 'Assistant', sans-serif;
+    margin-top: 0;
+    z-index: 2010;
+  }
+  #startMusicBtn{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    background-color: rgb(0, 0, 0);
+    color: rgb(135, 198, 156);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 5vw;
+  }
+/* לצוללן ולמטבעות */
+#diver, #coins {
+  position: absolute;
+  top: -10vh;
+  right: 0px; 
+  display: none;
+  z-index: 1998;
+  width: 30vw;
+  height: auto;
+}
+#coins{
+  top: -5vh;
+  right: -5px;
+}
+/* הופעה כשמפעילים אנימציה */
+#diver.animate, #coins.animate {
+  display: block;
+}
+@keyframes diverMove {
+  0% {
+    top: -1vh;
+    right: -1vw;
+  }
+  100% {
+    top: 85vh;
+    right: 95vw; 
+  }
+}
+
+@keyframes coinsMove {
+  0% {
+    top: -10vh;
+    right: -10px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    top: 70vh;
+    right: 70vw; 
+    opacity: 0;
+  }
+}
+
+#diver.animate {
+  animation: diverMove 5s linear forwards;
+}
+
+#coins.animate {
+  animation: coinsMove 5s linear forwards;
+}
+/* הפצצות של שלב 3*/
+.bombImg {
+  position: absolute;
+  top: -10vh;
+  z-index: 50;
+  width: 6vw;
+  height: auto;
+  animation: bombDown 5s linear forwards;
+}
+
+@keyframes bombDown {
+  0% {
+    top: -10vh;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    top: 110vh;
+  }
+
+}
+
+#timerP{
+  color: red;
+  font-size: 2vw;
+  z-index: 30000;
+  top: 0vh;
+  left: 77vw;
+  position: fixed;
+  display: block;
+}
+
+/*הדיב של ההוראות*/
+#instructions{
+
+   display:none;
+   position:fixed;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   background-color:rgba(0,0,0,0.8);
+   z-index:1000;
+}
+
+#intruImg{
+  width:95vw;
+  height: auto;
+  margin:auto;
+  display:block;
+  margin-top:2.5vh auto;
+}
+#closeintru{
+  position:absolute;
+  top:10px;
+  right:10px;
+}
+
+@media (max-width: 1000px) {
+  #backGround,#startGame,#mostPic,#gameOver{
+    height: 200vh;
+    width:auto;
+  }
+  #littleScore,#mediumScore,#bigScore{
+    font-size: 3vw;
+    top: -2vh;
+  }
+  #generalScore,#live{
+    font-size: 1.5vw;
+    top: -2vh;
+  }
+  #startMusicBtn{
+    width: 2vw;
+    height: 1vh;
+    top: 0.4vh;
+    font-size: 1.5vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circle button {
+    width: 20vw;
+    height: 20vw;
+  }
+  #divCircle3{
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;       
+    justify-content: center;
+  }
+  #back,#playAgain{
+    width: 30vw;
+  }
+  #first{
+    display: none;
+  }
+}
+
+@media (min-height: 1200px) {
+  #backGround,#startGame,#gameOver{
+    height: 200vh;
+    width:auto;
+  }
+  #first{
+    display: none;
+  }
+  .circle button {
+    width: 20vw;
+    height: 20vw;
+  }
+  
+
+  #divCircle3{
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;      
+    justify-content: center;
+  }
+  #back,#playAgain{
+    width: 30vw;
+  }
+  #first{
+    display: none;
+  }
+}
