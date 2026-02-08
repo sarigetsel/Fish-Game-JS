@@ -25,7 +25,7 @@ if(savedSrc){
   document.getElementById("backGround").src=savedSrc;
 }
 
-const music = new Audio("music/track1.WAV"); 
+const music = new Audio("music/track1.wav"); 
 music.loop = true;
 
 document.getElementById("startMusicBtn").addEventListener("click", function() {
